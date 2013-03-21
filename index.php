@@ -1,13 +1,14 @@
 <?php
     $url=parse_url(getenv(" mysql://b45cfe831c8530:f1fdb272@us-cdbr-east-03.cleardb.com/heroku_3177567c389039e?reconnect=true"));
 
-	echo($url." <br> oK???");
 	
     $server = $url["host"];
     $username = $url["user"];
     $password = $url["pass"];
     $db = substr($url["path"],1);
 
+	echo($server." <br> oK???".$username." <br>".$password." <br>".$db);
+	
     $dbhandle=mysql_connect($server, $username, $password)
 		or die("Couldn't connect to SQL Server on $server");
             

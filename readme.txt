@@ -15,3 +15,9 @@ so results show up on http://nameless-earth-6366.herokuapp.com
 to put it on github
 git remote add origin https://github.com/justinpa/reponame  (ie ..github.com/justin-palumbo/nameless-earth
 git push
+
+i am using heroku add on cleardb, so as to use mysql
+
+Username:	b45cfe831c8530
+Password:	f1fdb272
+CLEARDB_DATABASE_URL: mysql://b45cfe831c8530:f1fdb272@us-cdbr-east-03.cleardb.com/heroku_3177567c389039e?reconnect=true

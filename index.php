@@ -6,10 +6,12 @@
     $password = $url["pass"];
     $db = substr($url["path"],1);
 
-    $dbhandle=mysql_connect($server, $username, $password);
+    $dbhandle=mysql_connect($server, $username, $password)
+		or die("Couldn't connect to SQL Server on $server");
             
     
-    $selected=mysql_select_db($db);
+    $selected=mysql_select_db($db)
+		or die("Couldn't open database $db");
 
 	//declare the SQL statement that will query the database
 	$query = "SELECT id, name, year ";

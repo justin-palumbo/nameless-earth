@@ -1,0 +1,50 @@
+div#score_label
+{
+	display:inline;
+}
+
+div#score_box
+{
+	display:inline;
+}
+
+div.start_screen
+{
+	height:500px;
+	width:500px;
+	border-radius: 5px;
+	background-color:yellow;
+	border-style:solid;
+	border-width:5px;
+}
+
+div.body_part
+{
+	
+	background-color: purple;
+	position: absolute;
+
+}
+
+div.boundary
+{
+	background-color:black;
+	position:absolute;
+}
+
+div.food
+{
+	background-color:red;
+	position:absolute;
+}
+
+div.body_part.selected
+{
+	
+	background-color:pink;
+}
+
+div.view_box
+{
+	position: absolute;
+}

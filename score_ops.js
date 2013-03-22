@@ -42,6 +42,7 @@ function add_score(score)
 		if(xmlhttp.readyState==4&&xmlhttp.status==200)
 		{
 			display_scores();
+			alert(xmlhttp.responseText);
 		}
 	};
 	xmlhttp.open("POST","insert_scores.php?initials="+inits+"&score="+score,true);

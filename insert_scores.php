@@ -9,11 +9,6 @@ $myUser = $url["user"];
 $myPass = $url["pass"];
 $myDB = substr($url["path"],1);
 
-$myServer = "localhost";
-$myUser = "root";
-$myPass = "Delim3at";
-$myDB = "justin_db"; 
-
 //connection to the database
 $dbhandle = mysql_connect($myServer, $myUser, $myPass)
   or die("Couldn't connect to SQL Server on $myServer"); 

@@ -52,9 +52,13 @@ function start_screen_waiting(e)
 						setTimeout(
 							function()
 							{
-								alert("you lose");
+								alert("you lose and your score was "+score);
 								gb.kill();
-								startup();
+								$initial_area=$("<div id='post_game'/>");
+								$initial_area.append("<br>Enter your initials: <input type='text' id='inits'><br>");
+								$initial_area.append("<button type='button' onclick='add_score(score)'>Submit score</button>");
+								$initial_area.append("<button type='button' onclick='skip()'>Skip</button>");
+								$('body').append($initial_area);
 							}
 						,1000);
 					}
@@ -111,6 +115,7 @@ function startup()
 	$start_screen=$("<div/>");
 	$start_screen.addClass("start_screen");
 	$start_screen.text("Press enter to begin");
+	display_scores();
 	$('body').append($start_screen);
 	$('body').keydown(start_screen_waiting);
 	//alert("let's go!");

@@ -1,3 +1,20 @@
+div#main
+{
+	width:800px;
+}
+
+div#right_main
+{
+	height: 220px;
+	width:  200px;
+	border: 2px solid black;
+	border-radius: 5px;
+	background-color: #66D1BC
+;
+	float:right;
+	display:inline;
+}
+
 div#score_label
 {
 	display:inline;

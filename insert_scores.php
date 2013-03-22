@@ -19,12 +19,9 @@ $selected = mysql_select_db($myDB, $dbhandle)
 
  $query="INSERT INTO scores (initials,score) VALUES ('".$initials."',".$score.")";
 
- echo "the query is ".$query."<br>";
+ echo "the query is ".$query;
  
 $result = mysql_query($query);
-
-
-echo "inserted! initials are ".$initials." and score is ".($score);
 
 
 ?>

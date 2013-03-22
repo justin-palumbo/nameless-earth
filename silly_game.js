@@ -43,12 +43,12 @@ function start_screen_waiting(e)
 					if(score!=gb.score)
 					{
 						score=gb.score;
-						//alert("score update!!");
 						$("#score_box").text(score);
 					}
 					if(gb.numSnakes()==0)
 					{
 						clearInterval(main_timer);
+						$('body').off(); //stop listening for presses
 						setTimeout(
 							function()
 							{
@@ -93,6 +93,7 @@ function keyPressedHandler(e)
 			gb.takeDirection(moveDir);
 			break;
 		case SPACE_BAR:
+			//alert("swap!");
 			gb.tabSnake();
 			moveDir=snakeBox.getCurDirection();
 			break;
@@ -114,7 +115,7 @@ function startup()
 	moveDir="R";
 	$start_screen=$("<div/>");
 	$start_screen.addClass("start_screen");
-	$start_screen.text("Press enter to begin");
+	$start_screen.text("Press enter to begin!!!");
 	display_scores();
 	$('body').append($start_screen);
 	$('body').keydown(start_screen_waiting);

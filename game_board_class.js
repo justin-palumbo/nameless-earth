@@ -88,8 +88,8 @@ function game_board(corner_offset,border_height,border_width,pieceSize)
 	
 	this.random_unoccupied_square=function()
 		{
-			var toppy=Math.floor(1+Math.random()*(this.border_height-1));
-			var lefty=Math.floor(1+Math.random()*(this.border_width-1));
+			var toppy=Math.floor(1+Math.random()*(this.border_height-2));
+			var lefty=Math.floor(1+Math.random()*(this.border_width-2));
 			return {top:this.corner_offset.top+toppy*pieceSize,left:this.corner_offset.left+lefty*pieceSize};
 		};
 	

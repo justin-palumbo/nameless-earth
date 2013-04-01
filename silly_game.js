@@ -1,7 +1,7 @@
 var gb; //this game board
 var $start_screen;
 
-var printCoords=function()
+var printCoords=function() //used for testing
 	{
 		var stringy="";
 		for(var i in coords)
@@ -20,7 +20,7 @@ var ENTER=13;
 
 var moveDir="R"; //the direction of movement
 var defaultPieceSize=5; //the default size of a snake segment
-var defaultMoveSpeed=150; //what this means is: the number of PieceSize units to move at once
+var defaultMoveSpeed=150; //how often the default snake should do its thing
 
 var main_timer;
 
@@ -121,7 +121,7 @@ function startup(){
 		$press_enter=$("<span>").text("PRESS ENTER").attr("id","press_enter");
 	  $("#start_screen").append($press_enter);
 	}
-	display_scores();
+	//display_scores();
 	$('body').keydown(start_screen_waiting);
 	//alert("let's go!");
 }

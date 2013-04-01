@@ -7,8 +7,8 @@ function game_board(corner_offset,border_height,border_width,pieceSize)
 	this.coords={}; //the grid which we use to check for collisions
 					//1 represents an obstacle, either the game boundary, or snake body part itself
 					//2 represents food
-	this.defaultTopOff=this.corner_offset.top+10; //where we start the first Snake
-	this.defaultLeftOff=this.corner_offset.left+10;
+	this.defaultTopOff=this.corner_offset.top+this.pieceSize*2; //where we start the first Snake
+	this.defaultLeftOff=this.corner_offset.left+this.pieceSize*2;
 	this.number_of_snakes=0;
 	
 	this.snakeBox=new SnakeBox(this); //creates the snakeBox,something not ok here

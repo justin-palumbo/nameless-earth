@@ -34,7 +34,7 @@ function start_screen_waiting(e)
 	{
 		$('body').off(); //stop listening for ENTER
 		$start_screen.html(""); 
-		gb=new game_board($(".start_screen").offset(),50,80,defaultPieceSize);
+		gb=new game_board($("#start_screen").offset(),50,80,defaultPieceSize);
 		$('body').keydown(keyPressedHandler); //start listening for keyboard hits!!
 		//alert(gb.score);
 		main_timer=setInterval(
@@ -58,7 +58,7 @@ function start_screen_waiting(e)
 								$initial_area.append("<br>Enter your initials: <input type='text' id='inits'><br>");
 								$initial_area.append("<button type='button' onclick='add_score(score)'>Submit score</button>");
 								$initial_area.append("<button type='button' onclick='skip()'>Skip</button>");
-								$('.start_screen').append($initial_area);
+								$('#start_screen').append($initial_area);
 							}
 						,1000);
 					}
@@ -109,16 +109,19 @@ function keyPressedHandler(e)
 	}
 }
 
-function startup()
-{	
+function startup(){	
 	counter=0;
 	moveDir="R";
-	$start_screen=$("<div/>");
-	$start_screen.addClass("start_screen");
-	$press_enter=$("<span>").text("PRESS ENTER").addClass("press-enter");
-	$start_screen.append($press_enter);
+	if($("#start_screen").length==0){
+		$start_screen=$("<div/>");
+		$start_screen.attr("id","start_screen");
+		$('#game_container').prepend($start_screen);
+	}
+	if($("#press_enter").length==0){
+		$press_enter=$("<span>").text("PRESS ENTER").attr("id","press_enter");
+	  $("#start_screen").append($press_enter);
+	}
 	display_scores();
-	$('#game_container').prepend($start_screen);
 	$('body').keydown(start_screen_waiting);
 	//alert("let's go!");
 }

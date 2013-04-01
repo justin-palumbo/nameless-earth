@@ -59,12 +59,12 @@ div#score_container{
 	display:inline;
 }
 
-.press-enter{
+#press_enter{
   top: 150px;
   position: relative;
 }
 
-div.start_screen{
+#start_screen{
 	color:#4D4DFF;
 	text-align: center;
 	font-size: 30px;

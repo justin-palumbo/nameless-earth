@@ -86,7 +86,7 @@ div#score_container{
 
 div.body_part
 {
-	background-color: purple;
+	background-color: #4D4DFF;
 	position: absolute;
 }
 
@@ -105,7 +105,7 @@ div.food
 div.body_part.selected
 {
 	
-	background-color:pink;
+	background-color:#EE8822;
 }
 
 div.view_box

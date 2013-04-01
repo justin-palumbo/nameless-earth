@@ -19,7 +19,7 @@ var SPACE_BAR=32;
 var ENTER=13;
 
 var moveDir="R"; //the direction of movement
-var defaultPieceSize=5; //the default size of a snake segment
+var defaultPieceSize=8; //the default size of a snake segment
 var defaultMoveSpeed=150; //how often the default snake should do its thing
 
 var main_timer;
@@ -34,7 +34,7 @@ function start_screen_waiting(e)
 	{
 		$('body').off(); //stop listening for ENTER
 		$start_screen.html(""); 
-		gb=new game_board($("#start_screen").offset(),50,80,defaultPieceSize);
+		gb=new game_board($("#start_screen").offset(),50,63,defaultPieceSize);
 		$('body').keydown(keyPressedHandler); //start listening for keyboard hits!!
 		//alert(gb.score);
 		main_timer=setInterval(

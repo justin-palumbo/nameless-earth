@@ -19,7 +19,7 @@ var SPACE_BAR=32;
 var ENTER=13;
 
 var moveDir="R"; //the direction of movement
-var defaultPieceSize=5; //the default size of a snake segment
+var defaultPieceSize=8; //the default size of a snake segment
 var defaultMoveSpeed=150; //what this means is: the number of PieceSize units to move at once
 
 var main_timer;
@@ -27,14 +27,14 @@ var main_timer;
 var counter=0; //using this for testing. right now, if it hits 15, gonna increase snake size
 var score=0;
 
-function start_screen_waiting(e)
+function start_screen_waiting(e,offset)
 {
 	var code=e.keyCode;
 	if(code==ENTER)
 	{
 		$('body').off(); //stop listening for ENTER
-		$start_screen.remove();
-		gb=new game_board({top: 175,left: 10},50,80,defaultPieceSize);
+		$start_screen.html(""); 
+		gb=new game_board($(".start_screen").offset(),50,63,defaultPieceSize);
 		$('body').keydown(keyPressedHandler); //start listening for keyboard hits!!
 		//alert(gb.score);
 		main_timer=setInterval(
@@ -58,7 +58,7 @@ function start_screen_waiting(e)
 								$initial_area.append("<br>Enter your initials: <input type='text' id='inits'><br>");
 								$initial_area.append("<button type='button' onclick='add_score(score)'>Submit score</button>");
 								$initial_area.append("<button type='button' onclick='skip()'>Skip</button>");
-								$('body').append($initial_area);
+								$('.start_screen').append($initial_area);
 							}
 						,1000);
 					}
@@ -115,9 +115,10 @@ function startup()
 	moveDir="R";
 	$start_screen=$("<div/>");
 	$start_screen.addClass("start_screen");
-	$start_screen.text("Press enter to begin!!!");
-	display_scores();
-	$('body').append($start_screen);
+	$press_enter=$("<span>").text("PRESS ENTER").addClass("press-enter");
+	$start_screen.append($press_enter);
+	//display_scores();
+	$('#game_container').prepend($start_screen);
 	$('body').keydown(start_screen_waiting);
 	//alert("let's go!");
 }

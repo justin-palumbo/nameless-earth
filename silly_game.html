@@ -1,48 +1,35 @@
 <html>
-	<link rel="stylesheet" href="silly_game.css" />
-
-	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-	<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.1/jquery-ui.min.js"></script>
-	<script src="score_ops.js"></script>
-	<script src="game_board_class.js"></script>
-	<script src="Node_class.js"></script>
-	<script src="queue_class.js"></script>
-	<script src="body_part_class.js"></script>
-	<script src="snake_class.js"></script>
-	<script src="snake_box_class.js"></script>
-	<script src="silly_game.js"></script>
-
 	<head>
-		A snakey game! Use arrow keys to move around and space bar to "tab" between snakes when several are on the board
+		<link rel="stylesheet" href="silly_game.css" />
 	</head>
 
 	<body>
 		<div id="main">
-
-		<div id="right_main">
-		HIGH SCOREs
-			<div id="high_scores">
-				Loading . . .
+				<div class="heading">NAMELESS EARTH</div>
+				A snakey game! Use arrow keys to move around and space bar to "tab" between snakes when several are on the board. <br>
+				Scores reward many long snakes! <br>
+				So keep those snakes alive and well-fed!!<br>
+		</div>
+		<div class="score_container">
+		  <span id="score_label">Score: </span><span id="score_box">0</span>
+		</div>
+		<div id="game_container">
+			<div id="score_container">
+				<span class="highscore-header">HIGH SCORES</span>
+				<div id="high_scores">
+					Loading . . .
+				</div>
 			</div>
 		</div>
-		<div id="left_main">
-		
-		<h1> Wheeeee! </h1> 
-		Scores reward many long snakes! <br>
-		So keep those snakes alive and well-fed!!
-		</div>
-		</div>
-		
-		<div id="score_label">Score: </div><div id="score_box">0</div>
-		
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+		<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.1/jquery-ui.min.js"></script>
+		<script src="score_ops.js"></script>
+		<script src="game_board_class.js"></script>
+		<script src="Node_class.js"></script>
+		<script src="queue_class.js"></script>
+		<script src="body_part_class.js"></script>
+		<script src="snake_class.js"></script>
+		<script src="snake_box_class.js"></script>
+		<script src="silly_game.js"></script>
 	</body>
-
-
-
-
-
-
-
-
-
 </html>

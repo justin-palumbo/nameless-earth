@@ -1,51 +1,98 @@
-div#main
-{
-	width:800px;
+body{
+	font-family: monospace;
+  background-image: url('ps_neutral_@2x.png');
 }
 
-div#right_main
-{
-	height: 220px;
+div#main{
+	margin: 0 auto;
+	width: 740px;
+	padding: 20px;
+}
+
+.heading{
+	color:#4D4DFF;
+	font-size: 60px;
+  text-align: center;
+}
+
+div#score_container{
+	height: 400px;
 	width:  200px;
-	border: 2px solid black;
-	border-radius: 5px;
-	background-color: #66D1BC
-;
-	float:right;
+	padding:5px;
+	border-radius: 2px;
+	background-color: #F5F5F5;
+	display:inline-block;
+	vertical-align: top;
+	-moz-box-shadow: 3px 3px 4px #000;
+	-webkit-box-shadow: 3px 3px 4px #000;
+	box-shadow: 3px 3px 4px #000;
+	/* For IE 8 */
+	-ms-filter: "progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=135, Color='#000000')";
+	/* For IE 5.5 - 7 */
+	filter: progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=135, Color='#000000');
+}
+
+#game_container{
+	margin: 0 auto;
+	width:740px;
+}
+
+.score_container{
+  font-size: 20px;
+  margin: 0 auto;
+  width: 200px;
+
+}
+
+.highscore-header{
+	color:#4D4DFF;
+	font-size: 20px;
+}
+
+#score_label
+{
+	font-weight: bold;
 	display:inline;
 }
 
-div#score_label
-{
+#score_box{
 	display:inline;
 }
 
-div#score_box
-{
-	display:inline;
+.press-enter{
+  top: 150px;
+  position: relative;
 }
 
-div.start_screen
-{
-	height:500px;
-	width:500px;
-	border-radius: 5px;
-	background-color:yellow;
-	border-style:solid;
-	border-width:5px;
+div.start_screen{
+	color:#4D4DFF;
+	text-align: center;
+	font-size: 30px;
+	padding:5px;
+	height:400px;
+	width:504px;
+	display: inline-block;
+	border-radius: 2px;
+	background-color:#F5F5F5;
+	vertical-align: top;
+	-moz-box-shadow: 3px 3px 4px #000;
+	-webkit-box-shadow: 3px 3px 4px #000;
+	box-shadow: 3px 3px 4px #000;
+	/* For IE 8 */
+	-ms-filter: "progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=135, Color='#000000')";
+	/* For IE 5.5 - 7 */
+	filter: progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=135, Color='#000000');
 }
 
 div.body_part
 {
-	
 	background-color: purple;
 	position: absolute;
-
 }
 
 div.boundary
 {
-	background-color:black;
+	//background-color:#EEE;
 	position:absolute;
 }
 

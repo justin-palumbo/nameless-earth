@@ -1,15 +1,14 @@
 var gb; //this game board
 var $start_screen;
 
-var printCoords=function() //used for testing
+var printCoords=function(){ //used for testing
+	var stringy="";
+	for(var i in coords)
 	{
-		var stringy="";
-		for(var i in coords)
-		{
-			stringy=stringy+""+i+", ";
-		};
-		return stringy;
+		stringy=stringy+""+i+", ";
 	};
+	return stringy;
+};
 				
 var DOWN_ARROW=40;
 var UP_ARROW=38;
@@ -20,63 +19,60 @@ var ENTER=13;
 
 var moveDir="R"; //the direction of movement
 var defaultPieceSize=8; //the default size of a snake segment
-var defaultMoveSpeed=150; //how often the default snake should do its thing
-
+var counter=0; //used to check random snake generation
 var main_timer;
 var score=0;
+var randomSnakeCheck = 100;  //Every this many cycles, attempt to generate a snake
+var snakeProbability = .05 //Probability of generating a snake each attempt
+var snakeMinSpeed = 50;
+var snakeMaxSpeed = 90;
+var borderHeight = 50;
+var borderWidth = 63;
 
-function start_screen_waiting(e)
-{
+function startScreenWaiting(e){
+	var screenOffset = $("#start_screen").offset();
 	var code=e.keyCode;
-	if(code==ENTER)
-	{
+	if(code==ENTER){
 		$('body').off(); //stop listening for ENTER
 		$start_screen.html(""); 
-		gb=new game_board($("#start_screen").offset(),50,63,defaultPieceSize);
+		gb=new game_board(screenOffset,borderHeight,borderWidth,defaultPieceSize);
 		$('body').keydown(keyPressedHandler); //start listening for keyboard hits!!
 		//alert(gb.score);
 		main_timer=setInterval(
-				function()
-				{
-					if(Math.random() < .001){
-						gb.addSnake(Math.floor((Math.random()*50)+50));
-					}
-					if(score!=gb.score)
-					{
-						score=gb.score;
-						$("#score_box").text(score);
-					}
-					if(gb.numSnakes()==0)
-					{
-						clearInterval(main_timer);
-						$('body').off(); //stop listening for presses
-						setTimeout(
-							function()
-							{
-								alert("you lose and your score was "+score);
-								gb.kill();
-								$initial_area=$("<div id='post_game'/>");
-								$initial_area.append("<br>Enter your initials: <input type='text' id='inits'><br>");
-								$initial_area.append("<button type='button' onclick='add_score(score)'>Submit score</button>");
-								$initial_area.append("<button type='button' onclick='skip()'>Skip</button>");
-								$('#start_screen').append($initial_area);
-							}
-						,1000);
-					}
-					//alert("I hope it acted");
+			function(){
+				counter++;
+				if (counter % randomSnakeCheck == 0){
+					tryAddSnake();
+			  }
+				if(score!=gb.score){
+					score=gb.score;
+					$("#score_box").text(score);
 				}
-			
-			,5);
-		
-		
+				if(gb.numSnakes()==0){
+					clearInterval(main_timer);
+					$('body').off(); //stop listening for presses
+					setTimeout(
+						function()
+						{
+							alert("you lose and your score was "+score);
+							gb.kill();
+							$initial_area=$("<div id='post_game'/>");
+							$initial_area.append("<br>Enter your initials: <input type='text' id='inits'><br>");
+							$initial_area.append("<button type='button' onclick='add_score(score)'>Submit score</button>");
+							$initial_area.append("<button type='button' onclick='skip()'>Skip</button>");
+							$('#start_screen').append($initial_area);
+						}
+					,1000);
+				}
+				//alert("I hope it acted");
+			}
+		,5);	
 	}
 }
 
-function keyPressedHandler(e)
-{	
+function keyPressedHandler(e){	
 	var code=e.keyCode;
-	switch(code)
-	{
+	switch(code){
 		case DOWN_ARROW:
 			moveDir="D";
 			gb.takeDirection(moveDir);
@@ -101,6 +97,13 @@ function keyPressedHandler(e)
 	}
 }
 
+function tryAddSnake(){
+	if(Math.random() < snakeProbability){
+		var speed = Utility.getRandom(snakeMinSpeed,snakeMaxSpeed);
+		gb.addSnake(speed);
+	}
+}
+
 function startup(){	
 	moveDir="R";
 	if($("#start_screen").length==0){
@@ -112,9 +115,9 @@ function startup(){
 		$press_enter=$("<span>").text("PRESS ENTER").attr("id","press_enter");
 	  $("#start_screen").append($press_enter);
 	}
-	display_scores();
-	$('body').keydown(start_screen_waiting);
-	//alert("let's go!");
+	//asynchronous
+	setTimeout(display_scores,0);
+	$('body').keydown(startScreenWaiting);
 }
 
 $('document').ready(startup);

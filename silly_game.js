@@ -23,9 +23,9 @@ var counter=0; //used to check random snake generation
 var main_timer;
 var score=0;
 var randomSnakeCheck = 100;  //Every this many cycles, attempt to generate a snake
-var snakeProbability = .05 //Probability of generating a snake each attempt
-var snakeMinSpeed = 50;
-var snakeMaxSpeed = 90;
+var snakeProbability = .05; //Probability of generating a snake each attempt
+var snakeMinSpeed = 60;
+var snakeMaxSpeed = 120;
 var borderHeight = 50;
 var borderWidth = 63;
 
@@ -90,9 +90,7 @@ function keyPressedHandler(e){
 			gb.takeDirection(moveDir);
 			break;
 		case SPACE_BAR:
-			//alert("swap!");
 			gb.tabSnake();
-			moveDir=snakeBox.getCurDirection();
 			break;
 	}
 }
@@ -105,7 +103,6 @@ function tryAddSnake(){
 }
 
 function startup(){	
-	moveDir="R";
 	if($("#start_screen").length==0){
 		$start_screen=$("<div/>");
 		$start_screen.attr("id","start_screen");

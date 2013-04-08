@@ -1,10 +1,13 @@
-function game_board(corner_offset,border_height,border_width,pieceSize)
+function game_board(corner_offset,border_height,border_width,pieceSize,snakeMinSpeed,snakeMaxSpeed,snakeProbability)
 {
 	var self = this;
 	self.pieceSize=pieceSize;
 	self.border_height=border_height;
 	self.border_width=border_width;
 	self.corner_offset=corner_offset;
+	self.snakeMinSpeed = snakeMinSpeed;
+	self.snakeMaxSpeed = snakeMaxSpeed;
+	self.snakeProbability = snakeProbability;
 	self.coords={}; //the grid which we use to check for collisions
 					//1 represents an obstacle, either the game boundary, or snake body part itself
 					//2 represents food
@@ -97,6 +100,13 @@ function game_board(corner_offset,border_height,border_width,pieceSize)
 		var score_multiplier=self.snakeBox.getScoreMultiplier();
 		self.score=self.score+10*score_multiplier;
 	};
+
+	self.tryAddSnake = function(){
+		if(Math.random() < self.snakeProbability){
+			var speed = Utility.getRandom(self.snakeMinSpeed,self.snakeMaxSpeed);
+			gb.addSnake(speed);
+		}
+  }
 		
 	self.kill=function(){
 		//get rid of everything

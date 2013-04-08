@@ -23,7 +23,7 @@ var counter=0; //used to check random snake generation
 var main_timer;
 var score=0;
 var randomSnakeCheck = 100;  //Every this many cycles, attempt to generate a snake
-var snakeProbability = .05; //Probability of generating a snake each attempt
+var snakeProbability = .03; //Probability of generating a snake each attempt
 var snakeMinSpeed = 60;
 var snakeMaxSpeed = 120;
 var borderHeight = 50;
@@ -35,14 +35,14 @@ function startScreenWaiting(e){
 	if(code==ENTER){
 		$('body').off(); //stop listening for ENTER
 		$start_screen.html(""); 
-		gb=new game_board(screenOffset,borderHeight,borderWidth,defaultPieceSize);
+		gb=new game_board(screenOffset,borderHeight,borderWidth,defaultPieceSize,snakeMinSpeed,snakeMaxSpeed,snakeProbability);
 		$('body').keydown(keyPressedHandler); //start listening for keyboard hits!!
 		//alert(gb.score);
 		main_timer=setInterval(
 			function(){
 				counter++;
 				if (counter % randomSnakeCheck == 0){
-					tryAddSnake();
+					gb.tryAddSnake();
 			  }
 				if(score!=gb.score){
 					score=gb.score;
@@ -92,13 +92,6 @@ function keyPressedHandler(e){
 		case SPACE_BAR:
 			gb.tabSnake();
 			break;
-	}
-}
-
-function tryAddSnake(){
-	if(Math.random() < snakeProbability){
-		var speed = Utility.getRandom(snakeMinSpeed,snakeMaxSpeed);
-		gb.addSnake(speed);
 	}
 }
 

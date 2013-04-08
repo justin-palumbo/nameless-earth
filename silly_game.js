@@ -22,7 +22,7 @@ var defaultPieceSize=8; //the default size of a snake segment
 var counter=0; //used to check random snake generation
 var main_timer;
 var score=0;
-var randomSnakeCheck = 100;  //Every this many cycles, attempt to generate a snake
+var snakeCheck = 100;  //Every this many cycles, attempt to generate a snake
 var snakeProbability = .03; //Probability of generating a snake each attempt
 var snakeMinSpeed = 60;
 var snakeMaxSpeed = 120;

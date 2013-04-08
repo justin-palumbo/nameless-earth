@@ -112,7 +112,7 @@ function startup(){
 		$press_enter=$("<span>").text("PRESS ENTER").attr("id","press_enter");
 	  $("#start_screen").append($press_enter);
 	}
-	//display_scores();
+	display_scores();
 	$('body').keydown(start_screen_waiting);
 	//alert("let's go!");
 }

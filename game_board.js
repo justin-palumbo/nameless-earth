@@ -1,5 +1,4 @@
-function game_board(corner_offset,border_height,border_width,pieceSize,snakeMinSpeed,snakeMaxSpeed,snakeProbability)
-{
+function game_board(corner_offset,border_height,border_width,pieceSize,snakeMinSpeed,snakeMaxSpeed,snakeProbability){
 	var self = this;
 	self.pieceSize=pieceSize;
 	self.border_height=border_height;

@@ -1,10 +1,8 @@
 
-function display_scores()
-{			
+function display_scores(){			
 	//alert("hey baby");
 	var xmlhttp=new XMLHttpRequest(); //my new xml object, this is only gonna work for modern browsers
-	xmlhttp.onreadystatechange=function()
-	{
+	xmlhttp.onreadystatechange=function(){
 		//alert("hi there");
 		if(xmlhttp.readyState==4&&xmlhttp.status==200)
 		{
@@ -17,14 +15,12 @@ function display_scores()
 
 var score_flag=true;
 
-function skip()
-{
+function skip(){
 	$("#post_game").remove();
 	startup();
 }
 
-function add_score(score)
-{
+function add_score(score){
 	var inits=$("#inits").val();
 	if(inits.length!=3)
 	{
@@ -37,8 +33,7 @@ function add_score(score)
 	}
 	var xmlhttp=new XMLHttpRequest(); //my new xml object, this is only gonna work for modern browsers
 				
-	xmlhttp.onreadystatechange=function()
-	{
+	xmlhttp.onreadystatechange=function(){
 		if(xmlhttp.readyState==4&&xmlhttp.status==200)
 		{
 			display_scores();

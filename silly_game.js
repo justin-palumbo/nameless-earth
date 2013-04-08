@@ -23,8 +23,6 @@ var defaultPieceSize=8; //the default size of a snake segment
 var defaultMoveSpeed=150; //how often the default snake should do its thing
 
 var main_timer;
-
-var counter=0; //using this for testing. right now, if it hits 15, gonna increase snake size
 var score=0;
 
 function start_screen_waiting(e)
@@ -40,6 +38,9 @@ function start_screen_waiting(e)
 		main_timer=setInterval(
 				function()
 				{
+					if(Math.random() < .001){
+						gb.addSnake(Math.floor((Math.random()*50)+50));
+					}
 					if(score!=gb.score)
 					{
 						score=gb.score;
@@ -98,19 +99,9 @@ function keyPressedHandler(e)
 			moveDir=snakeBox.getCurDirection();
 			break;
 	}
-	counter++;
-	if(counter==10)
-	{
-		gb.addSnake(75);
-	}
-	if(counter==20)
-	{
-		//snakeBox.addSnake(defaultTopOff,defaultLeftOff,40,defaultPieceSize);
-	}
 }
 
 function startup(){	
-	counter=0;
 	moveDir="R";
 	if($("#start_screen").length==0){
 		$start_screen=$("<div/>");
@@ -121,7 +112,7 @@ function startup(){
 		$press_enter=$("<span>").text("PRESS ENTER").attr("id","press_enter");
 	  $("#start_screen").append($press_enter);
 	}
-	display_scores();
+	//display_scores();
 	$('body').keydown(start_screen_waiting);
 	//alert("let's go!");
 }

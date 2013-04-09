@@ -41,7 +41,7 @@ function startScreenWaiting(e){
 		main_timer=setInterval(
 			function(){
 				counter++;
-				if (counter % randomSnakeCheck == 0){
+				if (counter % snakeCheck == 0){
 					gb.tryAddSnake();
 			  }
 				if(score!=gb.score){

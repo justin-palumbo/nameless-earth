@@ -23,8 +23,9 @@ function bodyPart(topOff,leftOff,pieceSize,highlighted){ //constructor for the b
 		this.$htmlEl.removeClass("selected");
 	};
 	
-	this.kill=function(){ //specifically for destruction
+	this.kill=function(coords){ //specifically for destruction
 		this.$htmlEl.effect("explode");
+		coords[[this.$htmlEl.offset().top,this.$htmlEl.offset().left]] = undefined;
 		this.$htmlEl.remove();
 		//alert("am I still here?");
 	};

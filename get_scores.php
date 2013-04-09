@@ -24,6 +24,6 @@
 	while($row = mysql_fetch_array($result))
 	{
 		$counter++;
-		echo $myServer;
+		echo $counter.". ".$row["initials"]." " . $row["score"]. "<br>";
 	}
 ?>

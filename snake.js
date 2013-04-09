@@ -111,14 +111,13 @@ function Snake(topOff,leftOff,moveSpeed,pieceSize,gb) //constructor for the Snak
 			self.coords[A]=1; //the place where head is, it's now occupied 
 		};
 
-		self.inCollision=function()
+		self.inCollision=function(){
 		//originally i wanted collisions to be checked by keeping a 2-d array of which spaces were occupied
 		//however self was complicated by the fact the space the head is in always occupied by itself
 		//if there were just one snake we could always just count the head's square as unoccupied
 		//however with multi-snake action that solution won't work
 		//instead i'll keep a collision flag, update it within the movement function
 		//(that is, check for a collision right before adding the 'occupied status' to head's square
-		{
 			return self.colliding;
 		};
 		
@@ -127,8 +126,10 @@ function Snake(topOff,leftOff,moveSpeed,pieceSize,gb) //constructor for the Snak
 		};
 		
 		self.kill=function(){ //should remove snake from the board
+			var head = self.body_parts.get_front();
 			self.body_parts.each(function(item){
-					item.kill(self.coords);
+				item.kill(self.coords,head!=item);
 			});
+			delete(self);
 		};
 }

@@ -49,8 +49,7 @@ queue=function(){
 		
 	this.each=function(a_func){ //call a_func on each member of the queue
 			var trav=this.head;
-			while(trav!=null)
-			{
+			while(trav!=null){
 				a_func(trav.data);
 				trav=trav.next;
 			}

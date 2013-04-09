@@ -23,9 +23,11 @@ function bodyPart(topOff,leftOff,pieceSize,highlighted){ //constructor for the b
 		this.$htmlEl.removeClass("selected");
 	};
 	
-	this.kill=function(coords){ //specifically for destruction
+	this.kill=function(coords,clear){ //specifically for destruction
 		this.$htmlEl.effect("explode");
-		coords[[this.$htmlEl.offset().top,this.$htmlEl.offset().left]] = undefined;
+		if(clear){
+			coords[[this.$htmlEl.offset().top,this.$htmlEl.offset().left]] = undefined;
+		}
 		this.$htmlEl.remove();
 		//alert("am I still here?");
 	};
@@ -40,8 +42,7 @@ function bodyPart(topOff,leftOff,pieceSize,highlighted){ //constructor for the b
 		var leftOff=this.$htmlEl.offset().left;
 		var topOff=this.$htmlEl.offset().top;
 		var moveAmount=this.pieceSize;
-		switch(moveDir)
-		{
+		switch(moveDir){
 			case "R":
 				//alert("trying to move right...");
 				this.$htmlEl.offset({top:topOff,left: leftOff+moveAmount});

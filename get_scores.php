@@ -21,8 +21,7 @@
 	$result = mysql_query($query);
 	$counter=0;
 	
-	while($row = mysql_fetch_array($result))
-	{
+	while($row = mysql_fetch_array($result)){
 		$counter++;
 		echo $counter.". ".$row["initials"]." " . $row["score"]. "<br>";
 	}

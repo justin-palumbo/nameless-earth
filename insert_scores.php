@@ -17,12 +17,10 @@ $dbhandle = mysql_connect($myServer, $myUser, $myPass)
 $selected = mysql_select_db($myDB, $dbhandle)
   or die("Couldn't open database $myDB"); 
  
- if (!(strlen($initials) > 3) && preg_match('/[^A-Za-z0-9]/', $string)){
+ if (preg_match('/^[A-Za-z0-9]{1,3}$/', $string)){
    $query="INSERT INTO scores (initials,score) VALUES ('".$initials."',".$score.")";
- }
-
- echo "the query is ".$query;
- 
-$result = mysql_query($query);
+   echo "the query is ".$query;
+   $result = mysql_query($query);
+}
 
 ?>
